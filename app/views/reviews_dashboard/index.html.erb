@@ -1,0 +1,8 @@
+<h1>Posts Dashboard</h1>
+<%= form_for(current_user, url: destroy_user_session_path, method: :delete) do |f| %>
+  <%= f.submit "Sign Out", class: 'btn btn-danger' %>
+<% end %>
+
+<%= form_for(current_user, url: edit_user_registration_path, method: :get) do |f| %>
+  <%= f.submit "Edit Profile", class: 'btn btn-primary' %>
+<% end %>

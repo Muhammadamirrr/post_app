@@ -1,0 +1,87 @@
+AllCops:
+  TargetRubyVersion: 3.2
+  Include:
+    - '**/*.rb'
+    - '**/Rakefile'
+    - '**/Gemfile'
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/**/*'
+    - 'bin/*'
+
+# Enforce frozen string literal comment
+Lint/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+# Layout and formatting rules
+Layout/IndentationConsistency:
+  Enabled: true
+  EnforcedStyle: indented_internal_methods
+
+Layout/SpaceAroundOperators:
+  Enabled: true
+  SpaceAroundOperators:
+    - '='
+    - '+'
+    - '-'
+    - '*'
+    - '/'
+    - '%'
+    - '**'
+    - '&'
+    - '|'
+    - '^'
+    - '<'
+    - '>'
+    - '<='
+    - '>='
+    - '=='
+    - '==='
+    - '!='
+    - '=~'
+    - '!~'
+    - '<<'
+    - '>>'
+    - 'and'
+    - 'or'
+    - 'not'
+
+# Naming conventions
+Naming/FileName:
+  Enabled: true
+  Include:
+    - '**/*.rb'
+    - '**/Rakefile'
+    - '**/Gemfile'
+    - '**/Capfile'
+    - '**/*.ru'
+
+# Rails-specific rules
+Rails:
+  Enabled: true
+
+# Migration related rules
+Rails/NotNullColumn:
+  Enabled: true
+
+Rails/OutputSafety:
+  Enabled: true
+
+Rails/ReadWriteAttribute:
+  Enabled: true
+
+Rails/UnknownEnv:
+  Enabled: true
+
+# Security related rules
+Security/YAMLLoad:
+  Enabled: true
+
+# Other best practices and code style
+Style/Documentation:
+  Enabled: false
+
+# Use rubocop-rails cops for Rails-specific rules
+require:
+  - rubocop-rails

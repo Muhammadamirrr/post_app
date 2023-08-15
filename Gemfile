@@ -77,12 +77,11 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
 group :test do
   # Testing framework for Ruby on Rails
   gem 'rspec-rails'
 
-# Ruby gem used for creating and managing factories to streamline the process of creating objects for testing purposes
+  # Ruby gem used for creating and managing factories to streamline the process of creating objects for testing purposes
   gem 'factory_bot_rails'
 
   # Ruby gem for testing controllers

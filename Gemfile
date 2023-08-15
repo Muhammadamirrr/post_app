@@ -89,4 +89,7 @@ group :test do
 
   # Intercept HTTP requests made by your application and provide predefined responses, effectively simulating the behavior of the API without actually making real network requests.
   gem 'webmock'
+
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end

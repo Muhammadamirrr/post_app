@@ -6,7 +6,7 @@ RSpec.configure do |config|
   config.before(:each) do
     # Stub GET request to JSONPlaceholder API
     stub_request(:get, 'https://jsonplaceholder.typicode.com/posts')
-      .to_return(status: 200, body: '[{"id": 1, "title1": "New Post1", "body": "Content", "userId": 1}, {"id": 2, "title2": "New Post2", "body": "Content", "userId": 1}]', headers: {})
+      .to_return(status: 200, body: '[{"id": 1, "title": "New Post1", "body": "Content", "userId": 1}, {"id": 2, "title": "New Post2", "body": "Content", "userId": 1}]', headers: {})
 
     # Stub GET request to JSONPlaceholder API for a single resource
     stub_request(:get, 'https://jsonplaceholder.typicode.com/posts/1')

@@ -81,4 +81,13 @@ end
 group :test do
   # Testing framework for Ruby on Rails
   gem 'rspec-rails'
+
+# Ruby gem used for creating and managing factories to streamline the process of creating objects for testing purposes
+  gem 'factory_bot_rails'
+
+  # Ruby gem for testing controllers
+  gem 'rails-controller-testing'
+
+  # Intercept HTTP requests made by your application and provide predefined responses, effectively simulating the behavior of the API without actually making real network requests.
+  gem 'webmock'
 end

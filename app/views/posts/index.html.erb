@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Posts</h1>
+    <%= link_to 'New Post', new_post_path, class: 'btn btn-success' %>
+  </div>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= post['title'] %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">User ID: <%= post['userId'] %></h6>
+            <p class="card-text"><%= post['body'] %></p>
+            <div class="d-flex justify-content-between">
+              <%= link_to 'Edit', edit_post_path(post['id']), class: 'btn btn-primary' %>
+              <%= form_tag(post_path(1), method: :delete) do %>
+                <%= submit_tag "Delete Post", class: 'btn btn-danger' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

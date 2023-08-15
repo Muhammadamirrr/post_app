@@ -56,6 +56,9 @@ gem 'bootsnap', require: false
 # Authentication gem for managing user authentication
 gem 'devise'
 
+# Make HTTP requests in a more Ruby-esque way in your Rails application.
+gem 'httparty'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]

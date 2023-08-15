@@ -17,7 +17,7 @@ RSpec.describe PostsController, type: :controller do
   describe 'GET #index' do
     before { get :index }
 
-    it 'renders the index template' do
+    it 'renders the posts page' do
       expect(response).to render_template(:index)
     end
 
@@ -35,13 +35,13 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe 'GET #edit' do
-    let(:post_data) { { 'body' => 'Content', 'id' => 1, 'title' => 'New Post', 'userId' => 1 } }
+    let(:post_data) { { 'body' => 'Content', 'id' => 1, 'title' => 'New Post1', 'userId' => 1 } }
     before do
       allow(controller).to receive(:fetch_data).and_return(post_data)
       get :edit, params: { id: 1 }
     end
 
-    it 'renders the edit template' do
+    it 'renders the edit post page' do
       expect(response).to render_template(:edit)
     end
 

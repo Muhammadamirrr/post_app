@@ -16,7 +16,7 @@ RSpec.describe Devise::SessionsController, type: :controller do
     end
 
     context 'with invalid credentials' do
-      it 'renders the new template' do
+      it 'remains on the new login page' do
         post :create, params: { user: { email: user.email, password: 'wrong_password' } }
         expect(response).to render_template(:new)
       end

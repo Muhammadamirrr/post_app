@@ -2,15 +2,14 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_base_url
   before_action :set_post_id, only: %i[edit update destroy]
 
   def index
-    @posts = fetch_data("#{@base_url}/posts")
+    @posts = JSONPlaceHolderService.new(:get, '/posts').fetch_data
   end
 
   def create
-    response = send_request(:post, '/posts', post_params)
+    response = JSONPlaceHolderService.new(:post, '/posts', post_params).send_request
 
     if response.success?
       flash['alert alert-success'] = 'Post created successfully'
@@ -21,11 +20,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = fetch_data("#{@base_url}/posts/#{@post_id}")
+    @post =  JSONPlaceHolderService.new(:get, "/posts/#{@post_id}").fetch_data
   end
 
   def update
-    response = send_request(:put, "/posts/#{@post_id}", post_params.merge(id: @post_id))
+    response = JSONPlaceHolderService.new(:put, "/posts/#{@post_id}", post_params.merge(id: @post_id)).send_request
 
     if response.success?
       flash['alert alert-info'] = 'Post updated successfully'
@@ -36,7 +35,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    response = send_request(:delete, "/posts/#{@post_id}")
+    response = JSONPlaceHolderService.new(:delete, "/posts/#{@post_id}").send_request
 
     if response.success?
       flash['alert alert-info'] = 'Delete successful'
@@ -49,10 +48,6 @@ class PostsController < ApplicationController
 
   private
 
-    def set_base_url
-      @base_url = 'https://jsonplaceholder.typicode.com'
-    end
-
     def fetch_data(url)
       response = Net::HTTP.get(URI(url))
       JSON.parse(response)
@@ -60,13 +55,6 @@ class PostsController < ApplicationController
 
     def set_post_id
       @post_id = params[:id]
-    end
-
-    def send_request(method, path, data = {})
-      headers = { 'Content-Type' => 'application/json' }
-      data[:userId] = current_user.id if %i[post put].include?(method)
-
-      HTTParty.send(method, "#{@base_url}#{path}", headers:, body: data.to_json)
     end
 
     def handle_error(response, action = :index)

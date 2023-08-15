@@ -10,7 +10,7 @@ RSpec.configure do |config|
 
     # Stub GET request to JSONPlaceholder API for a single resource
     stub_request(:get, 'https://jsonplaceholder.typicode.com/posts/1')
-      .to_return(status: 200, body: '{"id": 1, "title1": "New Post1", "body": "Content", "userId": 1}', headers: {})
+      .to_return(status: 200, body: '{"id": 1, "title": "New Post1", "body": "Content", "userId": 1}', headers: {})
 
     # Stub POST request to JSONPlaceholder API
     stub_request(:post, 'https://jsonplaceholder.typicode.com/posts')

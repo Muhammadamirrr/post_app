@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     response = send_request(:post, '/posts', post_params)
 
     if response.success?
-      flash[:notice] = 'Post created successfully'
+      flash['alert alert-success'] = 'Post created successfully'
       redirect_to posts_path
     else
       handle_error(response, :new)
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     response = send_request(:put, "/posts/#{@post_id}", post_params.merge(id: @post_id))
 
     if response.success?
-      flash[:notice] = 'Post updated successfully'
+      flash['alert alert-info'] = 'Post updated successfully'
       redirect_to posts_path
     else
       handle_error(response, :edit)
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     response = send_request(:delete, "/posts/#{@post_id}")
 
     if response.success?
-      flash[:notice] = 'Delete successful'
+      flash['alert alert-info'] = 'Delete successful'
     else
       handle_error(response)
     end
@@ -70,7 +70,7 @@ class PostsController < ApplicationController
     end
 
     def handle_error(response, action = :index)
-      flash[:alert] = "Error: #{response.code} - #{response.message}"
+      flash['alert alert-danger'] = "Error: #{response.code} - #{response.message}"
       render action
     end
 

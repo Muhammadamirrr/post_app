@@ -1,4 +1,9 @@
 <div class="container">
+  <% flash.each do |type, message| %>
+    <div class="<%= type %>">
+      <%= message %>
+    </div>
+  <% end %>
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1>Posts</h1>
     <%= link_to 'New Post', new_post_path, class: 'btn btn-success' %>

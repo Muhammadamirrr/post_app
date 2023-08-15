@@ -77,3 +77,8 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+group :test do
+  # Testing framework for Ruby on Rails
+  gem 'rspec-rails'
+end
